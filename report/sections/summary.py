@@ -14,7 +14,7 @@ from reportlab.lib import colors
 from reportlab.lib.units import inch
 
 def add_vulnerability_summary(report, findings):
-    report.story.append(Paragraph("Vulnerability Summary", report.styles['Heading1']))
+    report.story.append(Paragraph("Vulnerability Summary", report.styles['SectionTitle']))
     report.story.append(Spacer(1, 12))
 
     levels = ["Critical", "High", "Moderate", "Low", "Informational"]
@@ -33,7 +33,7 @@ def add_vulnerability_summary(report, findings):
 
 # === PENTRU PDF ===
 def add_executive_summary(report, findings, **kwargs):
-    report.story.append(Paragraph("Executive Summary", report.styles['Heading1']))
+    report.story.append(Paragraph("Executive Summary", report.styles['SectionTitle']))
     report.story.append(Spacer(1, 12))
 
     levels = ["Critical", "High", "Moderate", "Low", "Informational"]
