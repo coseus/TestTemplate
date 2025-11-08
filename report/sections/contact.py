@@ -15,7 +15,7 @@ def add_contact_section(pdf, **kwargs):
 
     # Header
     data = [
-        [Paragraph("<b>Contact Information</b>", pdf.styles['Heading2'])],
+        [Paragraph("<b>Contact Information</b>", pdf.styles['SectionTitle'])],
         [""],
         ["Name", "Role", "Email", "Type"]
     ]
