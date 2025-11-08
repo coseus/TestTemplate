@@ -13,7 +13,7 @@ def add_poc(pdf, poc_list=None, **kwargs):
         pdf.story.append(PageBreak())
         return
 
-    pdf.story.append(Paragraph("Proof of Concept & Steps to Reproduce", pdf.styles['Heading1']))
+    pdf.story.append(Paragraph("Steps to Reproduce", pdf.styles['SectionTitle']))
     pdf.story.append(Spacer(1, 0.2 * inch))
 
     for i, poc in enumerate(poc_list, 1):
