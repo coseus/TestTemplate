@@ -1,0 +1,41 @@
+# report/sections/contact.py
+import streamlit as st
+from reportlab.platypus import Paragraph, Table, TableStyle, Spacer, PageBreak
+from reportlab.lib import colors
+from reportlab.lib.units import inch
+
+def add_table(pdf, data, col_widths, header_bg="#003366"):
+    """Helper pentru tabel simplu"""
+    table = Table(data, colWidths=col_widths)
+    table.setStyle(TableStyle([
+        ('BACKGROUND', (0,0), (-1,0), colors.HexColor(header_bg)),
+        ('TEXTCOLOR', (0,0), (-1,0), colors.white),
+        ('ALIGN', (0,0), (-1,-1), 'CENTER'),
+        ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
+        ('GRID', (0,0), (-1,-1), 0.5, colors.lightgrey),
+        ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'),
+        ('FONTSIZE', (0,0), (-1,0), 11),
+        ('FONTSIZE', (0,1), (-1,-1), 10),
+        ('LEFTPADDING', (0,0), (-1,-1), 6),
+        ('RIGHTPADDING', (0,0), (-1,-1), 6),
+    ]))
+    pdf.story.append(table)
+
+def add_contact(pdf, **kwargs):
+    pdf.story.append(Paragraph("Contact Information", pdf.styles['Heading1']))
+    pdf.story.append(Spacer(1, 0.2 * inch))
+
+    data = [
+        ["Name", "Role", "Email"],
+        ["Alex Pentester", "Lead Security Analyst", "alex@company.com"],
+        ["Support", "Support Team", "support@company.com"]
+    ]
+
+    add_table(
+        pdf=pdf,
+        data=data,
+        col_widths=[2*inch, 2*inch, 2.5*inch],
+        header_bg="#003366"
+    )
+
+    pdf.story.append(Table(add_table))
