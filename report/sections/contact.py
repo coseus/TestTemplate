@@ -9,7 +9,7 @@ def add_contact_section(pdf, **kwargs):
     contacts = st.session_state.get("contacts", [])
     
     if not contacts:
-        pdf.story.append(Paragraph("<b>Contact Information</b>", pdf.styles['Heading2']))
+        pdf.story.append(Paragraph("<b>Contact Information</b>", pdf.styles['SectionTitle']))
         pdf.story.append(Paragraph("No contacts defined.", pdf.styles['Normal']))
         return
 
