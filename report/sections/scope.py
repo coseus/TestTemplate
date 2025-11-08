@@ -5,7 +5,7 @@ from reportlab.lib.styles import ParagraphStyle
 def add_scope(report, **kwargs):
     scope_text = kwargs.get("scope", "No scope defined.")
     
-    report.story.append(Paragraph("Scope of Testing", report.styles['Heading1']))
+    report.story.append(Paragraph("Scope of Testing", report.styles['SectionTitle']))
     report.story.append(Spacer(1, 12))
     
     lines = scope_text.split('\n')
