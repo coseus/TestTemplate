@@ -20,7 +20,7 @@ def severity_color(severity):
 
 def add_technical_findings(pdf, findings=None, **kwargs):
     findings = findings or []
-    pdf.story.append(Paragraph("6. Technical Findings", pdf.styles['Heading1']))
+    pdf.story.append(Paragraph("6. Technical Findings", pdf.styles['SectionTitle']))
     pdf.story.append(Spacer(1, 0.2 * inch))
 
     for i, f in enumerate(findings, 1):
