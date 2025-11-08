@@ -75,18 +75,21 @@ def render():
     st.divider()
 
     # === GENERARE PDF (CU CULOARE DINAMICĂ) ===
+# În interiorul def render() → după UI color picker
     if st.button("Generate PDF", type="primary"):
         try:
             logo_path = PAGE_HEADER_LOGO
             if not os.path.exists(logo_path):
                 logo_path = None
-
+    
+            # === TRIMITE CULOAREA LA PDFReport ===
             pdf = PDFReport(
                 logo_path=logo_path,
                 watermark=add_watermark,
-                title_color=title_color,
-                cover_color=cover_color
+                title_color=title_color,     # ← DIN UI
+                cover_color=cover_color      # ← DIN UI
             )
+    
             pdf_bytes = pdf.generate(
                 findings=st.session_state.findings,
                 client=st.session_state.get("client", "Client"),
@@ -99,9 +102,9 @@ def render():
                 poc_list=st.session_state.poc_list
             )
             st.download_button("Download PDF", pdf_bytes, "report.pdf", "application/pdf")
-            st.success("PDF generated!")
+            st.success("PDF generat cu culori personalizate!")
         except Exception as e:
-            st.error(f"PDF error: {e}")
+            st.error(f"Eroare PDF: {e}")
 
     # === GENERARE DOCX ===
     if st.button("Generate DOCX"):
