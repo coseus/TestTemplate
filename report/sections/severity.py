@@ -5,7 +5,7 @@ from reportlab.lib.units import inch
 
 def add_severity_ratings(pdf, severity_data=None, **kwargs):
     # === TEXT ÎNAINTE DE TABEL ===
-    pdf.story.append(Paragraph("Finding Severity Ratings", pdf.styles['Heading1']))
+    pdf.story.append(Paragraph("Finding Severity Ratings", pdf.styles['SectionTitle']))
     intro_text = (
         "The following table defines levels of severity and corresponding CVSS score range that are used throughout the document "
         "to assess vulnerability and risk impact."
