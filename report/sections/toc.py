@@ -16,7 +16,7 @@ def add_toc(pdf, findings=None, poc_list=None, **kwargs):
     findings = findings or []
     poc_list = poc_list or []
 
-    pdf.story.append(Paragraph("Table of Contents", pdf.styles['Heading1']))
+    pdf.story.append(Paragraph("Table of Contents", pdf.styles['SectionTitle']))
     pdf.story.append(Spacer(1, 0.3 * inch))
 
     data = [["Page", "Section", "Details"]]
