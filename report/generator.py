@@ -21,13 +21,15 @@ from .sections.severity import add_severity_ratings
 from .sections.executive import add_executive_summary
 from .sections.findings import add_technical_findings
 from .sections.poc import add_poc
-
+from config import TITLE_COLOR, COVER_TITLE_COLOR, WATERMARK_TEXT, WATERMARK_COLOR, WATERMARK_FONTSIZE, WATERMARK_ANGLE
 
 class PDFReport:
-    def __init__(self, logo_path=None, watermark=False):
+    def __init__(self, logo_path=None, watermark=False, title_color=None, cover_color=None):
         self.buffer = BytesIO()
-        self.logo_path = logo_path
+        self.logo_path = logo_path or PAGE_HEADER_LOGO
         self.watermark = watermark
+        self.title_color = colors.HexColor(title_color or TITLE_COLOR)
+        self.cover_color = colors.HexColor(cover_color or COVER_TITLE_COLOR)
         self.doc = SimpleDocTemplate(
             self.buffer,
             pagesize=A4,
