@@ -7,7 +7,7 @@ def add_legal(pdf, client=None, **kwargs):
     # Preia client din session_state dacă nu e pasat
     client = client or st.session_state.get("client", "Client")
 
-    pdf.story.append(Paragraph("Legal Disclaimer & Confidentiality", pdf.styles['Heading1']))
+    pdf.story.append(Paragraph("Legal Disclaimer & Confidentiality", pdf.styles['SectionTitle']))
     pdf.story.append(Spacer(1, 0.3 * inch))
 
     # === CONFIDENTIALITY STATEMENT ===
