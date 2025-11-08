@@ -84,3 +84,9 @@ def add_cover(pdf, client=None, project=None, tester=None, date=None, **kwargs):
     pdf.story.append(conf_para)
 
     pdf.story.append(PageBreak())
+    if pdf.watermark:
+        from config import WATERMARK_TEXT, WATERMARK_COLOR, WATERMARK_FONTSIZE, WATERMARK_ANGLE
+        pdf.story.append(Paragraph(
+            f"<font color='{WATERMARK_COLOR}' size={WATERMARK_FONTSIZE}>{WATERMARK_TEXT}</font>",
+            pdf.styles['Watermark']
+        ))
