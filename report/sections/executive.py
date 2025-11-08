@@ -10,7 +10,7 @@ import plotly.express as px
 
 # === PENTRU PDF ===
 def add_executive_summary(pdf, findings, executive_text="", **kwargs):
-    pdf.story.append(Paragraph("Executive Summary", pdf.styles['Heading1']))
+    pdf.story.append(Paragraph("Executive Summary", pdf.styles['SectionTitle']))
     pdf.story.append(Spacer(1, 12))
 
     # PIE CHART
