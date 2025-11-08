@@ -5,7 +5,8 @@
 
 # === CULORI PDF (titluri, cover, etc.) ===
 TITLE_COLOR = "#003366"        # Toate titlurile secțiunilor
-COVER_TITLE_COLOR = "#1e40af"  # Titlul de pe copertă
+COVER_TITLE_COLOR = "#1e40af"
+PAGE_HEADER_LOGO = "assets/logo.png"# Titlul de pe copertă
 SEVERITY_COLORS = {
     "Critical": "#8B0000",
     "High": "#FF4500",
