@@ -43,9 +43,11 @@ class PDFReport:
         self.styles = self._create_styles()
         self.story = []
 
+# report/generator.py → în def _create_styles(self):
+
     def _create_styles(self):
         styles = getSampleStyleSheet()
-
+    
         # === TITLU SECȚIUNI (dinamic) ===
         styles.add(ParagraphStyle(
             name='SectionTitle',
@@ -56,7 +58,7 @@ class PDFReport:
             spaceAfter=12,
             fontName='Helvetica-Bold'
         ))
-
+    
         # === COVER TITLE (dinamic) ===
         styles.add(ParagraphStyle(
             name='CoverTitle',
@@ -67,16 +69,27 @@ class PDFReport:
             spaceAfter=20,
             fontName='Helvetica-Bold'
         ))
-
-        # === CONFIDENTIAL WATERMARK ===
+    
+        # === CONFIDENTIAL (pentru cover) ===
+        styles.add(ParagraphStyle(
+            name='Confidential',
+            fontSize=36,
+            textColor=colors.HexColor("#CCCCCC"),
+            alignment=1,
+            fontName='Helvetica-Bold',
+            spaceAfter=0
+        ))
+    
+        # === WATERMARK (dacă e activat) ===
         styles.add(ParagraphStyle(
             name='Watermark',
             fontSize=60,
             textColor=colors.HexColor("#CCCCCC"),
             alignment=1,
-            spaceAfter=0
+            spaceAfter=0,
+            fontName='Helvetica'
         ))
-
+    
         return styles
 
     def _header(self, canvas, doc):
