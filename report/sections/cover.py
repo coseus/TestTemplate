@@ -3,6 +3,7 @@ from reportlab.platypus import Paragraph, Spacer, Image, Table, TableStyle, Page
 from reportlab.lib import colors
 from reportlab.lib.units import inch
 import os
+from config import WATERMARK_TEXT, WATERMARK_COLOR, WATERMARK_FONTSIZE, WATERMARK_ANGLE
 
 def add_cover(pdf, client=None, project=None, tester=None, date=None, **kwargs):
     client = client or "Client Name"
@@ -82,11 +83,11 @@ def add_cover(pdf, client=None, project=None, tester=None, date=None, **kwargs):
     conf_para = Paragraph("CONFIDENTIAL", pdf.styles['Confidential'])
     conf_para.hAlign = 'CENTER'
     pdf.story.append(conf_para)
+        
+# === WATERMARK PE TOATE PAGINILE (opțional) ===
+    if pdf.watermark:
+        watermark = Paragraph("CONFIDENTIAL", pdf.styles['Watermark'])
+        watermark.hAlign = 'CENTER'
+        pdf.story.append(watermark)
 
     pdf.story.append(PageBreak())
-    if pdf.watermark:
-        from config import WATERMARK_TEXT, WATERMARK_COLOR, WATERMARK_FONTSIZE, WATERMARK_ANGLE
-        pdf.story.append(Paragraph(
-            f"<font color='{WATERMARK_COLOR}' size={WATERMARK_FONTSIZE}>{WATERMARK_TEXT}</font>",
-            pdf.styles['Watermark']
-        ))
