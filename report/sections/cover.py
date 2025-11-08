@@ -51,7 +51,7 @@ def add_cover(pdf, client=None, project=None, tester=None, date=None, **kwargs):
     pdf.story.append(Spacer(1, 0.6*inch))
 
     # === TITLU PRINCIPAL (CENTRAT) ===
-    title_para = Paragraph("Penetration Test Report", pdf.styles['CorporateTitle'])
+    title_para = Paragraph("Penetration Test Report", pdf.styles['CoverTitle'])
     title_para.hAlign = 'CENTER'
     pdf.story.append(title_para)
     pdf.story.append(Spacer(1, 0.3*inch))
